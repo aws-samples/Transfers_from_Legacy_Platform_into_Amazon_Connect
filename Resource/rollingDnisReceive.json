@@ -1,0 +1,363 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "fb375944-3ca1-48f0-a227-624bcce2341a",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": 14.4,
+      "y": 18.4
+    },
+    "ActionMetadata": {
+      "67cf682a-6a4c-4bcd-adb2-dc8f398aa9b4": {
+        "position": {
+          "x": 644.8,
+          "y": 13.6
+        },
+        "children": [
+          "14971749-c696-4337-b081-58932e194051"
+        ],
+        "overrideConsoleVoice": true,
+        "fragments": {
+          "SetContactData": "14971749-c696-4337-b081-58932e194051"
+        },
+        "overrideLanguageAttribute": true
+      },
+      "14971749-c696-4337-b081-58932e194051": {
+        "position": {
+          "x": 644.8,
+          "y": 13.6
+        },
+        "dynamicParams": []
+      },
+      "06ede39c-b0d9-472e-a760-f82f1c33539f": {
+        "position": {
+          "x": 1201.6,
+          "y": 404
+        }
+      },
+      "fb375944-3ca1-48f0-a227-624bcce2341a": {
+        "position": {
+          "x": 164.8,
+          "y": 14.4
+        }
+      },
+      "a8fc32e4-5051-4b36-8439-a9064a167471": {
+        "position": {
+          "x": 402.4,
+          "y": 15.2
+        }
+      },
+      "50e7b10d-3a4d-41d8-8cad-db9ae2a4ebb9": {
+        "position": {
+          "x": 952.8,
+          "y": 476.8
+        }
+      },
+      "7a9ae7bf-3677-4872-b3ab-e515252ecdbf": {
+        "position": {
+          "x": 892.8,
+          "y": 248
+        },
+        "parameters": {
+          "QueueId": {
+            "displayName": "BasicQueue"
+          }
+        },
+        "queue": {
+          "text": "BasicQueue"
+        }
+      },
+      "d9e9867f-233a-468e-94ad-76326b580d1c": {
+        "position": {
+          "x": 896.8,
+          "y": 19.2
+        }
+      },
+      "a14caf4d-d6ec-4bc0-b5a6-30d89c8c8eae": {
+        "position": {
+          "x": 283.2,
+          "y": 453.6
+        }
+      },
+      "731bdeba-9054-498b-8ecd-84cb89401ee9": {
+        "position": {
+          "x": 666.4,
+          "y": 254.4
+        }
+      },
+      "31481e68-11a3-4faa-82c5-b39206ea6cf4": {
+        "position": {
+          "x": 132,
+          "y": 223.2
+        },
+        "parameters": {
+          "LambdaFunctionARN": {
+            "displayName": "rollingDnis_py"
+          },
+          "LambdaInvocationAttributes": {
+            "dnis": {
+              "useDynamic": true
+            }
+          }
+        },
+        "dynamicMetadata": {
+          "function": false,
+          "dnis": true
+        }
+      },
+      "51ea6f5d-ed77-4395-90dc-84ba54b7e108": {
+        "position": {
+          "x": 437.6,
+          "y": 258.4
+        },
+        "parameters": {
+          "Attributes": {
+            "fname": {
+              "useDynamic": true
+            },
+            "lname": {
+              "useDynamic": true
+            },
+            "reason": {
+              "useDynamic": true
+            },
+            "accountnum": {
+              "useDynamic": true
+            },
+            "customerphone": {
+              "useDynamic": true
+            }
+          }
+        },
+        "dynamicParams": [
+          "fname",
+          "lname",
+          "reason",
+          "accountnum",
+          "customerphone"
+        ]
+      }
+    },
+    "Annotations": [],
+    "name": "rollingDnisReceive",
+    "description": "External Payment IVR Return and Continue based on ANI",
+    "type": "contactFlow",
+    "status": "published",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {
+        "TextToSpeechEngine": "Neural",
+        "TextToSpeechStyle": "None",
+        "TextToSpeechVoice": "Danielle"
+      },
+      "Identifier": "67cf682a-6a4c-4bcd-adb2-dc8f398aa9b4",
+      "Type": "UpdateContactTextToSpeechVoice",
+      "Transitions": {
+        "NextAction": "14971749-c696-4337-b081-58932e194051"
+      }
+    },
+    {
+      "Parameters": {
+        "LanguageCode": "en-US"
+      },
+      "Identifier": "14971749-c696-4337-b081-58932e194051",
+      "Type": "UpdateContactData",
+      "Transitions": {
+        "NextAction": "d9e9867f-233a-468e-94ad-76326b580d1c",
+        "Errors": [
+          {
+            "NextAction": "d9e9867f-233a-468e-94ad-76326b580d1c",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "06ede39c-b0d9-472e-a760-f82f1c33539f",
+      "Type": "DisconnectParticipant",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "FlowLoggingBehavior": "Enabled"
+      },
+      "Identifier": "fb375944-3ca1-48f0-a227-624bcce2341a",
+      "Type": "UpdateFlowLoggingBehavior",
+      "Transitions": {
+        "NextAction": "a8fc32e4-5051-4b36-8439-a9064a167471"
+      }
+    },
+    {
+      "Parameters": {
+        "RecordingBehavior": {
+          "RecordedParticipants": [
+            "Agent",
+            "Customer"
+          ],
+          "ScreenRecordedParticipants": [
+            "Agent"
+          ]
+        },
+        "AnalyticsBehavior": {
+          "Enabled": "True",
+          "AnalyticsLanguage": "en-US",
+          "AnalyticsRedactionBehavior": "Disabled",
+          "AnalyticsRedactionResults": "RedactedAndOriginal",
+          "ChannelConfiguration": {
+            "Chat": {
+              "AnalyticsModes": [
+                "ContactLens"
+              ]
+            },
+            "Voice": {
+              "AnalyticsModes": [
+                "RealTime"
+              ]
+            }
+          },
+          "SummaryConfiguration": {
+            "SummaryModes": [
+              "PostContact"
+            ]
+          }
+        }
+      },
+      "Identifier": "a8fc32e4-5051-4b36-8439-a9064a167471",
+      "Type": "UpdateContactRecordingBehavior",
+      "Transitions": {
+        "NextAction": "67cf682a-6a4c-4bcd-adb2-dc8f398aa9b4"
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "50e7b10d-3a4d-41d8-8cad-db9ae2a4ebb9",
+      "Type": "TransferContactToQueue",
+      "Transitions": {
+        "NextAction": "06ede39c-b0d9-472e-a760-f82f1c33539f",
+        "Errors": [
+          {
+            "NextAction": "06ede39c-b0d9-472e-a760-f82f1c33539f",
+            "ErrorType": "QueueAtCapacity"
+          },
+          {
+            "NextAction": "06ede39c-b0d9-472e-a760-f82f1c33539f",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "QueueId": "arn:aws:connect:us-east-1:810275630730:instance/65c845ea-f77e-4045-b759-ff911c4beffa/queue/2e847874-e1ee-4370-8809-8a36c8d802bd"
+      },
+      "Identifier": "7a9ae7bf-3677-4872-b3ab-e515252ecdbf",
+      "Type": "UpdateContactTargetQueue",
+      "Transitions": {
+        "NextAction": "50e7b10d-3a4d-41d8-8cad-db9ae2a4ebb9",
+        "Errors": [
+          {
+            "NextAction": "50e7b10d-3a4d-41d8-8cad-db9ae2a4ebb9",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "Retrieving your i v r information."
+      },
+      "Identifier": "d9e9867f-233a-468e-94ad-76326b580d1c",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "31481e68-11a3-4faa-82c5-b39206ea6cf4",
+        "Errors": [
+          {
+            "NextAction": "31481e68-11a3-4faa-82c5-b39206ea6cf4",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "We were unable to get your prevoius data. We are ending you to an agent for assitance."
+      },
+      "Identifier": "a14caf4d-d6ec-4bc0-b5a6-30d89c8c8eae",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "7a9ae7bf-3677-4872-b3ab-e515252ecdbf",
+        "Errors": [
+          {
+            "NextAction": "7a9ae7bf-3677-4872-b3ab-e515252ecdbf",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "SSML": "<speak> Welcome $.Attributes.fname . It looks like you $.Attributes.reason on account <say-as interpret-as=\"digits\">$.Attributes.accountnum</say-as>. Let me get you to an agent.</speak>"
+      },
+      "Identifier": "731bdeba-9054-498b-8ecd-84cb89401ee9",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "7a9ae7bf-3677-4872-b3ab-e515252ecdbf",
+        "Errors": [
+          {
+            "NextAction": "7a9ae7bf-3677-4872-b3ab-e515252ecdbf",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "LambdaFunctionARN": "arn:aws:lambda:us-east-1:810275630730:function:rollingDnis_py",
+        "InvocationTimeLimitSeconds": "3",
+        "LambdaInvocationAttributes": {
+          "function": "getcall",
+          "dnis": "$.SystemEndpoint.Address"
+        },
+        "ResponseValidation": {
+          "ResponseType": "STRING_MAP"
+        }
+      },
+      "Identifier": "31481e68-11a3-4faa-82c5-b39206ea6cf4",
+      "Type": "InvokeLambdaFunction",
+      "Transitions": {
+        "NextAction": "51ea6f5d-ed77-4395-90dc-84ba54b7e108",
+        "Errors": [
+          {
+            "NextAction": "a14caf4d-d6ec-4bc0-b5a6-30d89c8c8eae",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Attributes": {
+          "fname": "$.External.fname",
+          "lname": "$.External.lname",
+          "reason": "$.External.reason",
+          "accountnum": "$.External.accountnum",
+          "customerphone": "$.External.customerphone"
+        },
+        "TargetContact": "Current"
+      },
+      "Identifier": "51ea6f5d-ed77-4395-90dc-84ba54b7e108",
+      "Type": "UpdateContactAttributes",
+      "Transitions": {
+        "NextAction": "731bdeba-9054-498b-8ecd-84cb89401ee9",
+        "Errors": [
+          {
+            "NextAction": "731bdeba-9054-498b-8ecd-84cb89401ee9",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    }
+  ]
+}
